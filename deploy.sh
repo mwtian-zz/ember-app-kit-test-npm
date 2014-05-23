@@ -119,13 +119,13 @@ if [ -e "$DEPLOYMENT_SOURCE/bower.json" ]; then
   exitWithMessageOnError "bower failed"
 fi
 
-# 4. Run Grunt
-if [ -e "$DEPLOYMENT_SOURCE/Gruntfile.js" ]; then
-  eval $NPM_CMD install grunt-cli
-  exitWithMessageOnError "installing grunt failed"
-  ./node_modules/.bin/grunt --no-color dist
-  exitWithMessageOnError "grunt failed"
-fi
+# 4. Not running Grunt because the required files from ember-app-kit are not present
+#if [ -e "$DEPLOYMENT_SOURCE/Gruntfile.js" ]; then
+#  eval $NPM_CMD install grunt-cli
+#  exitWithMessageOnError "installing grunt failed"
+#  ./node_modules/.bin/grunt --no-color dist
+#  exitWithMessageOnError "grunt failed"
+#fi
 
 # 5. KuduSync
 if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
